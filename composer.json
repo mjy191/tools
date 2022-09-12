@@ -1,0 +1,20 @@
+{
+    "name": "mjy191/tools",
+    "description": "常用工具",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mjy191\\Tools\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MengJinYi",
+            "email": "mjy191@163.com"
+        }
+    ],
+    "require": {
+        "mjy191/enum": "1.*",
+        "mjy191/my-log": "1.*"
+    }
+}
