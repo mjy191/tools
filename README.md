@@ -24,7 +24,30 @@ return [
     'postSalt' => 'xxxx',
 ];
 ```
+### 1.3 配置捕获异常
+新建app/Exceptions/ApiException.php
+捕获ApiException抛出的异常进行处理
+```
+namespace App\Exceptions;
 
+use Mjy191\Tools\Tools;
+use Exception;
+
+class ApiException extends Exception
+{
+    /**
+     * 转换异常为 HTTP 响应
+     *
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
+     */
+    public function render($request)
+    {
+        return response()->json(Tools::returnData(null,$this->getCode(),$this->getMessage()))->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+    }
+}
+```
+### 1.4 使用举例
 api接口统一标准返回数据
 
 ```$xslt
