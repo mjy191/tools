@@ -67,4 +67,8 @@ class TestController extends Controller
     }
 }
 ```
+### 1.5 安装
+```
+composer require mjy191/tools
+```
 
