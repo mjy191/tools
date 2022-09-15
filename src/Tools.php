@@ -219,6 +219,14 @@ class Tools
     }
 
     /**
+     * 获取appId
+     */
+    public static function getAppId()
+    {
+        return config('tools.ak.' . Route::current()->getPrefix() . '.appId');
+    }
+
+    /**
      * 获取ak
      */
     public static function getAk()
