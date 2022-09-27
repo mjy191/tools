@@ -219,6 +219,23 @@ class Tools
     }
 
     /**
+     * 获取协议https
+     */
+    public static function getHttps()
+    {
+        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+        return $http_type;
+    }
+
+
+    /**
+     * 获取域名
+     */
+    public static function getHost(){
+        return self::getHttps().$_SERVER['HTTP_HOST'];
+    }
+
+    /**
      * 获取appId
      */
     public static function getAppId()
