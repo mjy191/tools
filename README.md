@@ -2,8 +2,10 @@
 ### 1.1 项目介绍
 > 基于laravel框架的工具，开发常用工具封装成静态方法
 ### 1.2 配置
-在laravel的 config\tools.php添加如下配置
-记录mysql操作日志
+在config/app.php的providers添加```Mjy191\Tools\ServiceProvider::class```
+
+使用命令```php artisan vendor:publish --provider="Mjy191\Tools\ServiceProvider"```发布配置config/tools.php
+
 ```
 <?php
 return [
