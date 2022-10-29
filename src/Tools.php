@@ -47,6 +47,7 @@ class Tools
             'code' => $code,
             'msg' => $msg,
             'data' => $data,
+            'logId' => MyLogs::logId(),
             'timestamp' => time()
         ];
     }
