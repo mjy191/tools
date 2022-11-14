@@ -226,6 +226,9 @@ class Tools
     public static function getHttps()
     {
         $server = Request::server();
+        if(PHP_SAPI=='fpm-fcgi'){
+            $server['HTTP_SCHEME'] = Request::instance()->getScheme();
+        }
         if(isset($server['HTTP_SCHEME'])){
             return $server['HTTP_SCHEME'];
         }else{
@@ -239,6 +242,9 @@ class Tools
      */
     public static function getHost(){
         $server = Request::server();
+        if(PHP_SAPI=='fpm-fcgi'){
+            $server['HTTP_SCHEME'] = Request::instance()->getScheme();
+        }
         return $server['HTTP_SCHEME'].'://'.$server['HTTP_HOST'];
     }
 
