@@ -3,6 +3,7 @@
 namespace Mjy191\Tools;
 
 use App\Exceptions\ApiException;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Mjy191\Enum\Enum;
@@ -22,7 +23,7 @@ class Tools
         if ($content) {
             $str = $content;
         } else {
-            $str = file_get_contents('php://input');
+            $str = Request::instance()->getContent();
         }
         $str = $appKey . $str . $appKey;
         MyLogs::write('sign pre', $str);
