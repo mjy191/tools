@@ -225,8 +225,12 @@ class Tools
      */
     public static function getHttps()
     {
-        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
-        return $http_type;
+        $server = Request::server();
+        if(isset($server['HTTP_SCHEME'])){
+            return $server['HTTP_SCHEME'];
+        }else{
+            return 'http';
+        }
     }
 
 
@@ -234,8 +238,14 @@ class Tools
      * 获取域名
      */
     public static function getHost(){
-        return self::getHttps().$_SERVER['HTTP_HOST'];
+        $server = Request::server();
+        return $server['HTTP_SCHEME'].'://'.$server['HTTP_HOST'];
     }
+
+    public static function getUri(){
+        return str_replace(Request::instance()->getSchemeAndHttpHost(),'',Request::fullUrl());
+    }
+
 
     /**
      * 获取appId
