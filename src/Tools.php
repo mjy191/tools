@@ -128,17 +128,17 @@ class Tools
     }
 
     /**
-     * 批量创建新数据
-     * @param array $key
+     * 批量创建新数组
+     * @param array $keys
      * @param array $data
      * @return array|mixed
      */
-    public static function issetNewData(array $key, array $data)
+    public static function issetNewData(array $keys, array $data)
     {
         $newData = [];
-        foreach ($key as $val) {
-            if (isset($data[$val])) {
-                $newData[$val] = $data[$val];
+        foreach ($keys as $key) {
+            if(array_key_exists($key,$data)){
+                $newData[$key] = $data[$key];
             }
         }
         return $newData;
