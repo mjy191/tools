@@ -3,6 +3,7 @@
 namespace Mjy191\Tools;
 
 use App\Exceptions\ApiException;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
@@ -41,6 +42,9 @@ class Tools
      */
     public static function returnData($data = null, $code = Enum::codeSuccess, $msg = Enum::msg[Enum::codeSuccess])
     {
+        if(($code == Enum::codeSuccess) && (DB::transactionLevel()>0)){
+            DB::commit();
+        }
         if ($data == null) {
             $data = (object)[];
         }
