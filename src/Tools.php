@@ -41,7 +41,7 @@ class Tools
      */
     public static function returnData($data = null, $code = Enum::codeSuccess, $msg = Enum::msg[Enum::codeSuccess])
     {
-        if ($data == null) {
+        if ($data === null) {
             $data = (object)[];
         }
         return [
